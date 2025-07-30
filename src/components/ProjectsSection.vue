@@ -35,14 +35,17 @@
               </div>
               
               <div class="flex gap-3">
-                <a href="#" class="flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors text-sm font-medium">
+                <a :href="project.externalLink" 
+                  class="flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors text-sm font-medium">
                   <ExternalLink :size="16" />
                   Demo
                 </a>
-                <a href="#" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors text-sm font-medium">
+                <a :href="project.github" 
+                  class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors text-sm font-medium">
                   <Github :size="16" />
                   Code
                 </a>
+
               </div>
             </div>
           </div>
@@ -54,31 +57,35 @@
 
 <script setup>
 import { ref } from 'vue'
-import { ExternalLink, Github, Globe, Smartphone, Database, ShoppingCart, MessageCircle, Calendar } from 'lucide-vue-next'
+import { ExternalLink, Github, CoinsIcon, LucideCalendar, Workflow } from 'lucide-vue-next'
 
 const projects = ref([
   {
     id: 1,
-    title: 'Application E-commerce',
-    description: 'Une plateforme e-commerce moderne avec panier, paiements et gestion des commandes.',
-    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Stripe'],
-    icon: ShoppingCart
+    title: 'CKD-Care',
+    description: 'Une plateforme de gestion et de suivi des patients atteints de Maladie Rénale Chronique (MRC).',
+    technologies: ['React', 'Express.js', 'MongoDB'],
+    icon: LucideCalendar,
+    externalLink: "https://ckd-care.onrender.com",
+    github: "https://github.com/Bill-Peniel/myCKDserver.git"
   },
   {
     id: 2,
-    title: 'Dashboard Analytics',
-    description: 'Interface d\'administration avec graphiques interactifs et analyses en temps réel.',
-    technologies: ['React', 'TypeScript', 'Chart.js', 'PostgreSQL'],
-    icon: Database
+    title: 'C-TONTINE',
+    description: 'Système de gestion efficace de la tontine.',
+    technologies: ['React', 'Node.js'],
+    icon: CoinsIcon,
+    github: "https://github.com/Bill-Peniel/C-TONTINE.git"
   },
   {
     id: 3,
-    title: 'App Mobile Chat',
-    description: 'Application de messagerie instantanée avec notifications push et médias.',
+    title: 'Programmation Python et R',
+    description: "Implémentation d'un sous-ensemble de Numpy en Python, tracé de graphique et analyse de données, petit programme GUI en Python avec Tkinter.",
     technologies: ['React Native', 'Firebase', 'Socket.io'],
-    icon: MessageCircle
+    icon: Workflow,
+    github: "https://github.com/Yoannoza/groupe_1.git"
   },
-  {
+  /*{
     id: 4,
     title: 'Site Web Corporate',
     description: 'Site vitrine responsive avec CMS personnalisé et optimisations SEO.',
@@ -98,7 +105,7 @@ const projects = ref([
     description: 'Solution complète avec authentification, abonnements et API REST.',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
     icon: Smartphone
-  }
+  }*/
 ])
 </script>
 

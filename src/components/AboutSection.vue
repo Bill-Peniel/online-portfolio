@@ -47,7 +47,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const initials = ref('VN') // À personnaliser avec vos initiales
+const initials = ref('BA') // À personnaliser avec vos initiales
 const interests = ref([
   'Développement Web',
   'UI/UX Design',

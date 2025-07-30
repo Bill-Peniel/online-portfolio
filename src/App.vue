@@ -82,7 +82,7 @@
     <footer class="bg-gray-50 dark:bg-gray-800 section-padding">
       <div class="max-w-7xl mx-auto text-center">
         <p class="text-gray-600 dark:text-gray-400">
-          © 2023 {{ name }}. Tous droits réservés.
+          © 2025 {{ name }}. Tous droits réservés.
         </p>
       </div>
     </footer>

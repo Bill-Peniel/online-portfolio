@@ -29,8 +29,8 @@
                 </div>
                 <div>
                   <p class="font-medium text-gray-900 dark:text-white">Email</p>
-                  <a href="mailto:votre@email.com" class="text-primary-600 dark:text-primary-400 hover:underline">
-                    billakpacheme@gmail.com
+                  <a href="mailto:billakpacheme84@gmail.com" class="text-primary-600 dark:text-primary-400 hover:underline">
+                    billakpacheme84@gmail.com
                   </a>
                 </div>
               </div>
@@ -41,7 +41,7 @@
                 </div>
                 <div>
                   <p class="font-medium text-gray-900 dark:text-white">Téléphone</p>
-                  <a href="tel:+33123456789" class="text-primary-600 dark:text-primary-400 hover:underline">
+                  <a href="tel:+2290157068288" class="text-primary-600 dark:text-primary-400 hover:underline">
                     +229 01 57 06 82 88
                   </a>
                 </div>
@@ -67,9 +67,6 @@
                 </a>
                 <a href="https://www.linkedin.com/in/bill-akpacheme-145b8225a" class="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                   <Linkedin :size="20" />
-                </a>
-                <a href="#" class="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                  <Twitter :size="20" /> 
                 </a>
               </div>
             </div>
@@ -155,7 +152,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send } from 'lucide-vue-next'
+import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-vue-next'
 
 const form = ref({
   name: '',
@@ -167,25 +164,47 @@ const form = ref({
 const isSubmitting = ref(false)
 
 const submitForm = async () => {
-  isSubmitting.value = true
+  isSubmitting.value = true;
 
-  // Simuler l'envoi du formulaire
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  try {
+    // Créer un FormData pour FormSubmit
+    const formData = new FormData();
+    formData.append('name', form.value.name);
+    formData.append('email', form.value.email);
+    formData.append('subject', form.value.subject);
+    formData.append('message', form.value.message);
+    
+    // Ajouter des champs pour FormSubmit
+    formData.append('_subject', `Nouveau message de ${form.value.name}`);
+    formData.append('_captcha', 'false'); // Désactiver le captcha pour les tests
+    formData.append('_template', 'table'); // Utiliser un template de tableau
 
-  // Ici vous pourriez intégrer un service d'envoi d'email
-  console.log('Formulaire soumis:', form.value)
+    const response = await fetch("https://formsubmit.co/billakpacheme84@gmail.com", {
+      method: "POST",
+      body: formData
+    });
 
-  // Réinitialiser le formulaire
-  form.value = {
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    if (response.ok) {
+      alert("Message envoyé avec succès !");
+      // Réinitialiser le formulaire
+      form.value = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      };
+    } else {
+      console.error('Erreur de réponse:', response.status, response.statusText);
+      alert("Une erreur est survenue lors de l'envoi. Vérifiez la console pour plus de détails.");
+    }
+  } catch (error) {
+    console.error('Erreur de réseau:', error);
+    alert("Erreur de réseau. Veuillez réessayer.");
   }
 
-  isSubmitting.value = false
-  alert('Message envoyé avec succès !')
-}
+  isSubmitting.value = false;
+};
+
 </script>
 
 <style>
