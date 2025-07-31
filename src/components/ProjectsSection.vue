@@ -71,6 +71,15 @@ const projects = ref([
   },
   {
     id: 2,
+    title: 'AnimeStreamer',
+    description: "Plateforme pour otaku permettant d'accéder à des catalogues d'animes.",
+    technologies: ['Vue.js', 'Tailwind CSS'],
+    icon: CoinsIcon,
+    externalLink: "https://anime-streamer.onrender.com",
+    github: "https://github.com/Bill-Peniel/anime-streamer.git"
+  },
+  {
+    id: 3,
     title: 'C-TONTINE',
     description: 'Système de gestion efficace de la tontine.',
     technologies: ['React', 'Node.js'],
@@ -78,7 +87,7 @@ const projects = ref([
     github: "https://github.com/Bill-Peniel/C-TONTINE.git"
   },
   {
-    id: 3,
+    id: 4,
     title: 'Programmation Python et R',
     description: "Implémentation d'un sous-ensemble de Numpy en Python, tracé de graphique et analyse de données, petit programme GUI en Python avec Tkinter.",
     technologies: ['React Native', 'Firebase', 'Socket.io'],
